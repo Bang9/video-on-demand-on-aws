@@ -58,7 +58,7 @@ module.exports.addCustomOrigin = async (distributionId, domainName) => {
         TargetOriginId: originId,
         ForwardedValues: {
             Cookies: { Forward: 'none' },
-            Headers: { Quantity: 0 },
+            Headers: { Quantity: 1, Items: ['Origin'] },
             QueryString: true,
             QueryStringCacheKeys: { Quantity: 1, Items: ['aws.manifestfilter'] }
         },
