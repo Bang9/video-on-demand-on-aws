@@ -37,7 +37,7 @@ exports.handler = async (event) => {
                 const vodKey = fullPath[fullPath.length - 2];
                 
                 // Ingest workflow triggered by s3 event::
-                event.guid = vodKey || uuidv4();
+                event.guid = vodKey + "__" +uuidv4().split("-")[0];
                 
                 if (fileExt === 'json') {
                     event.workflowTrigger = 'Metadata';
