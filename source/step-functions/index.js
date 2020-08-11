@@ -33,8 +33,8 @@ exports.handler = async (event) => {
                 const fileExt = key.slice((key.lastIndexOf(".") - 1 >>> 0) + 2);
                 
                 // Video key is extracted from previous path of file
-                const fullPath = key.replace("." + fileExt, "");
-                const vodKey = fullPath.split("/").pop();
+                const fullPath = key.replace("." + fileExt, "").split("/");
+                const vodKey = fullPath[fullPath.length - 2];
                 
                 // Ingest workflow triggered by s3 event::
                 event.guid = vodKey || uuidv4();
