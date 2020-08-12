@@ -65,6 +65,8 @@ const handler = async (event) => {
         const response = await mediaPackageVod.createAsset(params).promise();
 
         event.egressEndpoints = convertEndpoints(response.EgressEndpoints, event.cloudFront);
+        event.packageAssetId = randomId;
+        
         console.log(`ENDPOINTS:: ${JSON.stringify(event.egressEndpoints, null, 2)}`);
     } catch (err) {
         await error.handler(event, err);
